@@ -1,0 +1,7 @@
+CustomBookBundle\Entity\Book:
+    book_{1..12}:
+        name: '<title()>'
+        author: '<name()>'
+        language: '<text(20)>'
+        publisher: '<name()>'
+        summary: '<sentence()>'

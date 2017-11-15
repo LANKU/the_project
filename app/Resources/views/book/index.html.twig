@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-2"><h1>Book list </h1></div>
+        <div class="col-md-2"><a class="btn btn-primary btn-lg" href="{{ path('book_new') }}" rold="button">
+
+                Create a new entry
+
+            </a></div>
+        <div class="col-md-2"><a class="btn btn-primary btn-lg" href="{{ path('custom_pdf') }}">
+                Generate PDF</a></div>
+        <div class="col-md-6"></div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="records_list table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Language</th>
+                <th>Publisher</th>
+                <th>Summary</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
+                    <td>{{ book.name }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.language }}</td>
+                    <td>{{ book.publisher }}</td>
+                    <td>{{ book.summary }}</td>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <ul style="list-style-type: none;">
+                            <li>
+                                <a class="btn btn-default btn-xs"
+                                   href="{{ path('book_show', { 'id': book.id }) }}">show</a>
+                            </li>
+                            <li style="margin-top: 10px;">
+                                <a class="btn btn-default btn-xs"
+                                   href="{{ path('book_edit', { 'id': book.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
